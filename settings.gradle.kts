@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MobileAppDev2025"
+rootProject.name = "TxtRPGFINALMOBAPP"
 include(":app")
  

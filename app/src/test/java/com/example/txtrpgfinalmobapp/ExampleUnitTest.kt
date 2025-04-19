@@ -1,4 +1,4 @@
-package com.example.mobileappdev2025
+package com.example.txtrpgfinalmobapp
 
 import org.junit.Test
 
