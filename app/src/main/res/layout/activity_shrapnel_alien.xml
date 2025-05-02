@@ -8,22 +8,14 @@
     android:background="#000000"
     tools:context=".ShrapnelAlien">
 
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="407dp"
-        android:layout_height="105dp"
-        android:ems="10"
-        android:inputType="text"
-        android:lineSpacingExtra="10sp"
-        android:lines="@integer/material_motion_duration_long_2"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Upon Entering the East Wing Of the Lab, You are Faced By A Creature that Looks Out of This World"
-        android:textAlignment="textStart"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:verticalScrollbarPosition="defaultPosition"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="403dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="446dp" />
 
     <Button
         android:id="@+id/button2"
@@ -61,7 +53,7 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ShrapnelAlien"
+        app:srcCompat="@drawable/shrapnelaliennew"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-4dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

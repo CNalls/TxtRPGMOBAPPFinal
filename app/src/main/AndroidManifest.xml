@@ -13,6 +13,12 @@
         android:theme="@style/Theme.TxtRPGFINALMOBAPP"
         tools:targetApi="31">
         <activity
+            android:name=".GoldenCavern1"
+            android:exported="false" />
+        <activity
+            android:name=".GameScreen"
+            android:exported="false" />
+        <activity
             android:name=".ShrapnelAlien"
             android:exported="false" />
         <activity
@@ -28,12 +34,11 @@
             android:name=".EightLeggedCrawlyMonster"
             android:exported="false" />
         <activity
-            android:name=".TitleScreen"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".TitleScreen"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.TxtRPGFINALMOBAPP">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
