@@ -17,6 +17,9 @@ class Story (val gs : GameScreen)
     var nextPosition3 = "";
     var nextPosition4 = "";
     var undergroundLabKey = false
+    var westClosed = false
+    var leftClosed = false
+    var rightClosed = false
 
 
 
@@ -37,6 +40,8 @@ class Story (val gs : GameScreen)
             "labBowelsLeft" -> labBowelsLeft()
             "labBowelsRight" -> labBowelsRight()
             "goldenCave" -> goldenCave()
+            "acidicMonstrisityDeath" -> acidicMonstrisityDeath()
+            "shrapnelAlienDeath" -> shrapnelAlienDeath()
 
         }
     }
@@ -227,7 +232,7 @@ class Story (val gs : GameScreen)
 
 
         nextPosition1 = "startingPoint"
-        nextPosition2 = "slimedead"
+        nextPosition2 = "slimeDead"
         nextPosition3 = "death"
         nextPosition4 = ""
     }
@@ -308,7 +313,7 @@ class Story (val gs : GameScreen)
         gs.findViewById<Button>(R.id.choiceButton2).text = "Right..."
         gs.findViewById<Button>(R.id.choiceButton3).text = ""
         //gs.findViewById<Button>(R.id.choiceButton4).text = ""
-        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.VISIBLE
         gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
         gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
 
@@ -324,21 +329,21 @@ class Story (val gs : GameScreen)
         gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.undergroundlab)
 
         // Ensure GameScreen has these public properties
-        gs.findViewById<TextView>(R.id.gameTextView).text = "You slowly tread along the sterile lab tiling until you reach a room and it is very dark.\n You faintly hear a hum of buzzing followed by low and sadistic laughter... YOU ARE NOT ALONE... A creature which you cannot fully make out yet enters the room with you\nWHAT DO YOU DO?!"
+        gs.findViewById<TextView>(R.id.gameTextView).text = "You slowly tread along the sterile lab tiling until you reach are hit my the smell of death.\n There is a room up ahead and you get an uneasy feeling. As you reach the opening you see soemthing crunching on bones and chewing flesh.  The smell of rot fills your lungs...it sees you, and theres no running away this time...THE END IS NEAR!!!"
 
-        gs.findViewById<Button>(R.id.choiceButton1).text = "HIDE!!! (Initiate Sneak Roll)" //
+        gs.findViewById<Button>(R.id.choiceButton1).text = "HOLD FAST!" //
         gs.findViewById<Button>(R.id.choiceButton2).text = ""
-        gs.findViewById<Button>(R.id.choiceButton3).text = "Hide inside of a mysterious vat of liquid." //you die, the liquid steams and bubbles as you enter, at first it feel like a warm bath then burning then screaming.  the creature chuckles and is intrigued
-        gs.findViewById<Button>(R.id.choiceButton4).text = "FACE IT HEAD ON!!!"
-        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.VISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).text = ""
+        gs.findViewById<Button>(R.id.choiceButton4).text = ""
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
         gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
         gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
 
 
-        nextPosition1 = "noSneak"
-        nextPosition2 = "labBowelsRight"
-        nextPosition3 = "death"
-        nextPosition4 = "quFight"
+        nextPosition1 = "shrapnelAlien"
+        nextPosition2 = ""
+        nextPosition3 = ""
+        nextPosition4 = ""
     }
 
     fun shrapnelAlien(){
@@ -349,15 +354,15 @@ class Story (val gs : GameScreen)
 
         gs.findViewById<Button>(R.id.choiceButton1).text = "You have studied in the arts of paladins as well.  CAST SMITE ON THEE FOUL DEMON!"  //you forgot you lack magic and holy power, you die
         gs.findViewById<Button>(R.id.choiceButton2).text = "You use your athletics to try and gain the advantage for a CRITICAL ATTACK"
-        gs.findViewById<Button>(R.id.choiceButton3).text = ""
+        gs.findViewById<Button>(R.id.choiceButton3).text = "Defend and Observe your Attacker!"
         //gs.findViewById<Button>(R.id.choiceButton4).text = "FACE IT HEAD ON!!!"
         gs.findViewById<Button>(R.id.choiceButton2).visibility = View.VISIBLE
         gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
         gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
 
 
-        nextPosition1 = "labBowelsLeft"
-        nextPosition2 = "labBowelsRight"
+        nextPosition1 = "death"
+        nextPosition2 = "shrapnelAlienDeath"
         nextPosition3 = ""
         nextPosition4 = ""
     }
@@ -370,7 +375,7 @@ class Story (val gs : GameScreen)
         gs.findViewById<TextView>(R.id.gameTextView).text = "You slowly tread along the sterile lab tiling until you reach a room and it is very dark.\n You faintly hear a hum of buzzing followed by low and sadistic laughter... YOU ARE NOT ALONE... A creature which you cannot fully make out yet enters the room with you\nWHAT DO YOU DO?!"
 
         gs.findViewById<Button>(R.id.choiceButton1).text = "HIDE!!! (Initiate Sneak Roll)"
-        gs.findViewById<Button>(R.id.choiceButton2).text = ""
+        gs.findViewById<Button>(R.id.choiceButton2).text = "Attempt to talk to it"
         gs.findViewById<Button>(R.id.choiceButton3).text = "Hide inside of a mysterious vat of liquid."
         gs.findViewById<Button>(R.id.choiceButton4).text = "FACE IT HEAD ON!!!"
         gs.findViewById<Button>(R.id.choiceButton2).visibility = View.VISIBLE
@@ -378,7 +383,7 @@ class Story (val gs : GameScreen)
         gs.findViewById<Button>(R.id.choiceButton4).visibility = View.VISIBLE
 
 
-        nextPosition1 = "perception"
+        nextPosition1 = "sneak"
         nextPosition2 = "deathByQu"
         nextPosition3 = "deathVat"
         nextPosition4 = "quFight"
@@ -388,7 +393,7 @@ class Story (val gs : GameScreen)
         gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.undergroundlab)
 
         // Ensure GameScreen has these public properties
-        gs.findViewById<TextView>(R.id.gameTextView).text = "You slowly tread along the sterile lab tiling until you reach a room and it is very dark.\n You faintly hear a hum of buzzing followed by low and sadistic laughter... YOU ARE NOT ALONE... A creature which you cannot fully make out yet enters the room with you\nWHAT DO YOU DO?!"
+        gs.findViewById<TextView>(R.id.gameTextView).text = "You watch as the insectoid creature hovers through the room using its tail thing as a hand to reach"
 
         gs.findViewById<Button>(R.id.choiceButton1).text = "HIDE!!! (Initiate Sneak Roll)"
         gs.findViewById<Button>(R.id.choiceButton2).text = ""
@@ -506,15 +511,155 @@ class Story (val gs : GameScreen)
         gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
         gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
 
-        nextPosition1 = "startingPoint"
+        nextPosition1 = "googahConfuse"
+        nextPosition2 = "googahExplain"
+        nextPosition3 = "googahFight"
+        nextPosition4 = "googahQuest"
+    }
+
+    fun googahQuest(){
+
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.googah)
+        // Ensure GameScreen has these public properties
+        gs.findViewById<TextView>(R.id.gameTextView).text = "Upon stepping closer to the cavernous entrance, you immediately see two creature step out.  It appears to be an...Ogre and a Goblin chained together???\n\nWhat do you do?"
+
+        gs.findViewById<Button>(R.id.choiceButton1).text = "Apologize and leave"
+        gs.findViewById<Button>(R.id.choiceButton2).text = "Ask whats in that cave."
+        gs.findViewById<Button>(R.id.choiceButton3).text = "ATTACK THY FOUL BEASTS"
+        gs.findViewById<Button>(R.id.choiceButton4).text = "Ask why they are chained together"
+
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
+
+        nextPosition1 = "googahConfuse"
+        nextPosition2 = "googahExplain"
+        nextPosition3 = "googahFight"
+        nextPosition4 = "googahQuest"
+    }
+    fun googahExplain(){
+
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.googah)
+        // Ensure GameScreen has these public properties
+        gs.findViewById<TextView>(R.id.gameTextView).text = "The goblin looks at you like you are stupid and says in whatever language that they are speaking no not really...however you can understand it"
+
+        gs.findViewById<Button>(R.id.choiceButton1).text = "Apologize and leave"
+        gs.findViewById<Button>(R.id.choiceButton2).text = "Ask whats in that cave."
+        gs.findViewById<Button>(R.id.choiceButton3).text = "ATTACK THY FOUL BEASTS"
+        gs.findViewById<Button>(R.id.choiceButton4).text = "Ask why they are chained together"
+
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
+
+        nextPosition1 = "googahConfuse"
+        nextPosition2 = "googahExplain"
+        nextPosition3 = "googahFight"
+        nextPosition4 = "googahQuest"
+    }
+
+    fun googahFight(){
+
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.googah)
+        // Ensure GameScreen has these public properties
+        gs.findViewById<TextView>(R.id.gameTextView).text = "The two sense your aggression and begin to chant something.  The are charging an attack! \n What do you DOOOO!!!"
+
+        gs.findViewById<Button>(R.id.choiceButton1).text = "Apologize and leave"
+        gs.findViewById<Button>(R.id.choiceButton2).text = "Attack Their Chain"
+        gs.findViewById<Button>(R.id.choiceButton3).text = "Attack GOO"
+        gs.findViewById<Button>(R.id.choiceButton4).text = "Attack GAH"
+
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.VISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.VISIBLE
+        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.VISIBLE
+
+        nextPosition1 = "googahConfuse"
+        nextPosition2 = "googahLariat"
+        nextPosition3 = "deathByGoo"
+        nextPosition4 = "deathByGah"
+    }
+    fun googahLariat(){
+
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.googah)
+        // Ensure GameScreen has these public properties
+        gs.findViewById<TextView>(R.id.gameTextView).text = "You run up and attack the chain connecting the two.  Your sword bounces off as if you were thwarted by a magical force.\n\nAll of a sudden you get clothelined by the chain as the two's attack is done charging.  THEY CAST BERSERK LARIAT.... and yeah you die..."
+
+        gs.findViewById<Button>(R.id.choiceButton1).text = "Continue"
+        gs.findViewById<Button>(R.id.choiceButton2).text = ""
+        gs.findViewById<Button>(R.id.choiceButton3).text = ""
+        gs.findViewById<Button>(R.id.choiceButton4).text = ""
+
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
+
+        nextPosition1 = "death"
         nextPosition2 = ""
         nextPosition3 = ""
         nextPosition4 = ""
     }
 
-    fun googahFight(){
+    fun deathByGoo(){
 
-        
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.googah)
+        // Ensure GameScreen has these public properties
+        gs.findViewById<TextView>(R.id.gameTextView).text = "You run up to the goblin as he looks like the easiest target.  All of a sudden, you see the goblin turn golden and the ogre begins to spin with the goblin.\n\n Goo Crashes into your body like a golden flail and you explode and die...That must have been the spell they were casting..."
+
+        gs.findViewById<Button>(R.id.choiceButton1).text = "Continue"
+        gs.findViewById<Button>(R.id.choiceButton2).text = ""
+        gs.findViewById<Button>(R.id.choiceButton3).text = ""
+        gs.findViewById<Button>(R.id.choiceButton4).text = ""
+
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
+
+        nextPosition1 = "death"
+        nextPosition2 = ""
+        nextPosition3 = ""
+        nextPosition4 = ""
+    }
+
+    fun deathByGah(){
+
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.googah)
+        // Ensure GameScreen has these public properties
+        gs.findViewById<TextView>(R.id.gameTextView).text = "The bigger they are the harder they fall you think as you go for the 17 foot tall ogre.\n\n Wait, all of a sudden you are in the sky, how did this happen?\n\n And now as you are falling through the sky after being tossed like a pebble you wonder why you put yourself in this situation as you hit the ground and become a puddle."
+
+        gs.findViewById<Button>(R.id.choiceButton1).text = "Continue"
+        gs.findViewById<Button>(R.id.choiceButton2).text = ""
+        gs.findViewById<Button>(R.id.choiceButton3).text = ""
+        gs.findViewById<Button>(R.id.choiceButton4).text = ""
+
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
+
+        nextPosition1 = "death"
+        nextPosition2 = ""
+        nextPosition3 = ""
+        nextPosition4 = ""
+    }
+
+    fun googahConfuse(){
+
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.googah)
+        // Ensure GameScreen has these public properties
+        gs.findViewById<TextView>(R.id.gameTextView).text = "The goblin and ogre look at the running knight as if he is a clown as he runs away. \n\n You have fled like a coward, you coward!"
+
+        gs.findViewById<Button>(R.id.choiceButton1).text = "Continue"
+        gs.findViewById<Button>(R.id.choiceButton2).text = "Ask whats in that cave."
+        gs.findViewById<Button>(R.id.choiceButton3).text = "ATTACK THY FOUL BEASTS"
+        gs.findViewById<Button>(R.id.choiceButton4).text = "Ask why they are chained together"
+
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
+
+        nextPosition1 = "startingPoint"
+        nextPosition2 = ""
+        nextPosition3 = ""
+        nextPosition4 = ""
     }
 
     fun death(){
@@ -561,7 +706,54 @@ class Story (val gs : GameScreen)
         nextPosition4 = ""
 
         undergroundLabKey = true
+        westClosed = true
 
+    }
+
+    fun acidicMonstrisityDeath(){
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.deadcreature)
+
+        // Ensure GameScreen has these public properties
+        gs.findViewById<TextView>(R.id.gameTextView).text = "That thing has ceased all motor functions and the other one has dissapeared, that may have been your only chance to kill it earlier.  You decide collecting some fo the chemicals from this creature would stand useful, however you wouldn't want to get it on yourself or anything valuable. \n\n You make your way back to the forked hallway."
+
+        gs.findViewById<Button>(R.id.choiceButton1).text = "Collect some of the chemical in one of the nearby flasks and store for later..."
+        gs.findViewById<Button>(R.id.choiceButton2).text = ""
+        gs.findViewById<Button>(R.id.choiceButton3).text = ""
+        //gs.findViewById<Button>(R.id.choiceButton4).text = ""
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
+
+
+        nextPosition1 = "labBowels"
+        nextPosition2 = ""
+        nextPosition3 = ""
+        nextPosition4 = ""
+
+        undergroundLabKey = true
+    }
+
+    fun shrapnelAlienDeath(){
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.deadcreature)
+
+        // Ensure GameScreen has these public properties
+        gs.findViewById<TextView>(R.id.gameTextView).text = "You leap off of the walls like a rabid lemur using your athletics to ascertain a swift and accurate critical hit on the creature. Your even surprised that this worked.  You get a feeling that you should collect one of the creatures razor sharp file like fingers as you think it would be really cool to have.\n\n You make your way back to the forked hallway."
+
+        gs.findViewById<Button>(R.id.choiceButton1).text = "Grab the parts and depart..."
+        gs.findViewById<Button>(R.id.choiceButton2).text = ""
+        gs.findViewById<Button>(R.id.choiceButton3).text = ""
+        //gs.findViewById<Button>(R.id.choiceButton4).text = ""
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
+
+        leftClosed = true
+        nextPosition1 = "labBowels"
+        nextPosition2 = ""
+        nextPosition3 = ""
+        nextPosition4 = ""
+
+        undergroundLabKey = true
 
     }
 
