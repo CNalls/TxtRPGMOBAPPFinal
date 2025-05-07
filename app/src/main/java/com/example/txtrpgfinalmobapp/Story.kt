@@ -20,7 +20,7 @@ class Story (val gs : GameScreen)
     var wolfKey = false
     var westClosed = false
     var leftClosed = false
-    //var rightClosed = false
+    var rightClosed = false
     var wolfClosed = false
     var acidicLiquid = false
     var razor = false
@@ -56,7 +56,7 @@ class Story (val gs : GameScreen)
             "labExperiment" -> labExperiment()
             "gasMask" -> gasMask()
             "swordMelt" -> swordMelt()
-            "corruptedGem" -> corruptedGem()
+            //"corruptedGem" -> corruptedGem()
             "gooGah" -> gooGah()
             "googahQuest" -> googahQuest()
             "googahExplain" -> googahExplain()
@@ -94,7 +94,7 @@ class Story (val gs : GameScreen)
     }
 
     //where game starts
-    @SuppressLint("SetTextI18n", "CutPasteId")
+    @SuppressLint("SetTextI18n", "CutPasteId") //use this to edit lab wings being closed!
     fun startingPoint() {
         gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.road)
         // Ensure GameScreen has these public properties
@@ -223,7 +223,7 @@ class Story (val gs : GameScreen)
     }
 
     fun sneak() {
-        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.forest) // Or specific perception image
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.undergroundlab) // Or specific perception image
 
         gs.findViewById<TextView>(R.id.gameTextView).text = "You think like a feline and move like a feline, or atleast try to..."
 
@@ -458,16 +458,16 @@ class Story (val gs : GameScreen)
 
         gs.findViewById<Button>(R.id.choiceButton1).text = "Left..."
         gs.findViewById<Button>(R.id.choiceButton2).text = "Right..."
-        gs.findViewById<Button>(R.id.choiceButton3).text = ""
+        gs.findViewById<Button>(R.id.choiceButton3).text = "Go back"
         //gs.findViewById<Button>(R.id.choiceButton4).text = ""
         gs.findViewById<Button>(R.id.choiceButton2).visibility = View.VISIBLE
-        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton3).visibility = View.VISIBLE
         gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
 
 
         nextPosition1 = "labBowelsLeft"
         nextPosition2 = "labBowelsRight"
-        nextPosition3 = ""
+        nextPosition3 = "startingPoint"
         nextPosition4 = ""
     }
 
@@ -494,7 +494,7 @@ class Story (val gs : GameScreen)
     }
 
     fun shrapnelAlien(){
-        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.undergroundlab)
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.shrapnelalien)
 
         // Ensure GameScreen has these public properties
         gs.findViewById<TextView>(R.id.gameTextView).text = "The creature is straight out of an eldritch nightmare, with sharp unnatural claws and of alien origin.\n WHAT DO DO YOU?"
@@ -601,7 +601,7 @@ class Story (val gs : GameScreen)
     }
 
     fun quFight(){
-        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.qu)
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.thequ)
 
         // Ensure GameScreen has these public properties
         gs.findViewById<TextView>(R.id.gameTextView).text = "This, THING its not from here.  Its bloodlust makes you feel as though there is no escape.  You can't beat it...."
@@ -700,7 +700,7 @@ class Story (val gs : GameScreen)
         gs.findViewById<Button>(R.id.choiceButton3).text = ""
         gs.findViewById<Button>(R.id.choiceButton4).text = ""
 
-        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton2).visibility = View.VISIBLE
         gs.findViewById<Button>(R.id.choiceButton3).visibility = View.INVISIBLE
         gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
 
@@ -744,7 +744,7 @@ class Story (val gs : GameScreen)
 
         gs.findViewById<Button>(R.id.choiceButton2).visibility = View.VISIBLE
         gs.findViewById<Button>(R.id.choiceButton3).visibility = View.VISIBLE
-        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.INVISIBLE
+        gs.findViewById<Button>(R.id.choiceButton4).visibility = View.VISIBLE
 
         nextPosition1 = "startingPoint"
         nextPosition2 = "googahExplain"
@@ -898,7 +898,7 @@ class Story (val gs : GameScreen)
         else if (razor || acidicLiquid) {
             // Case 2: Player has at least one item
             gs.findViewById<TextView>(R.id.gameTextView).text =
-                "Goo and Gah notice you holding something that might help. Their eyes light up with hope!"
+                "Goo and Gah notice you holding something that might help. Their eyes light up with hope! You may go inside human, there you will meet boss..."
 
             gs.findViewById<Button>(R.id.choiceButton1).text = "Use Razor Claw" + if (!razor) " (Missing)" else ""
             gs.findViewById<Button>(R.id.choiceButton1).isEnabled = razor
@@ -914,14 +914,14 @@ class Story (val gs : GameScreen)
             // Set next positions based on choices
             nextPosition1 = if (razor) "useRazorOnChains" else ""
             nextPosition2 = if (acidicLiquid) "useAcidOnChains" else ""
-            nextPosition3 = if (razor && acidicLiquid) "combineItemsForChains" else ""
+            nextPosition3 = if (razor && acidicLiquid) "gromEncounter" else ""
             nextPosition4 = "startingPoint"
         }
     }
 
     fun gromEncounter(){
         if (corruptedGem==false){
-            gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.undergroundlab)
+            gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.gorgle)
 
             // Ensure GameScreen has these public properties
             gs.findViewById<TextView>(R.id.gameTextView).text = "Hmm, why did Goo and Gah let you in...Are you perhaps here to give me more gold? No? Then why are you here? to take my gold? When will ANYONE bring me my GEMSTONE seriously! How bad can a lab be for GRODS SAKE!! ANSWER ME!!!"
@@ -941,7 +941,7 @@ class Story (val gs : GameScreen)
             nextPosition4 = "retraceSteps"
         }
         if (corruptedGem==true){
-            gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.undergroundlab)
+            gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.gorgle)
 
             // Ensure GameScreen has these public properties
             gs.findViewById<TextView>(R.id.gameTextView).text = "Upon looking closer, it appears that the lab is locked and needs a key of some sort..."
@@ -1073,7 +1073,7 @@ class Story (val gs : GameScreen)
         gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.thequ)
 
         // Ensure GameScreen has these public properties
-        gs.findViewById<TextView>(R.id.gameTextView).text = "Lets just say with some main character, power of friendship, true damage, ultra critical hit bs that you manage to beat him."
+        gs.findViewById<TextView>(R.id.gameTextView).text = "Lets just say with some main character, power of friendship, true damage, ultra critical hit bs that you manage to beat him.\n\n Better yet, he just fly's away ebfore you can beat him so HAH!"
 
         gs.findViewById<Button>(R.id.choiceButton1).text = "Collect the gem and return to the cave..."
         gs.findViewById<Button>(R.id.choiceButton2).text = ""
@@ -1091,7 +1091,7 @@ class Story (val gs : GameScreen)
     }
 
     fun gromFight(){
-        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.undergroundlab)
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.gorgle)
 
         // Ensure GameScreen has these public properties
         gs.findViewById<TextView>(R.id.gameTextView).text = "He casts Omni Midas Touch...You dont even know why you cant fight against this..."
@@ -1113,7 +1113,7 @@ class Story (val gs : GameScreen)
     }
 
     fun corruptionEnsues(){
-        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.undergroundlab)
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.corruptedorcking)
 
         // Ensure GameScreen has these public properties
         gs.findViewById<TextView>(R.id.gameTextView).text = "Oh, you really got it......HAHAHAHAHHAHAHAHAHAHAHAH.  The hulk of a man leaps up to you and grabs it before you can even react.  Hes laughing like a mad orc.  Suddently You see him start to change...\n\n You know, I should reward you human, I mean you brought the the core of chaos after all, idiot.  Guess ill give you a quick death as payment. The orc starts to turn into something different and even bigger than the ogre you saw outside.  "
@@ -1134,7 +1134,7 @@ class Story (val gs : GameScreen)
     }
 
     fun corruptGrom(){
-        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.undergroundlab)
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.corruptedorcking)
 
         // Ensure GameScreen has these public properties
         gs.findViewById<TextView>(R.id.gameTextView).text = "AHHAHAHAHAHAHAHAHAHAH now my ultimate attack.........CLIFFHANGERRRRRR"
@@ -1156,7 +1156,7 @@ class Story (val gs : GameScreen)
     }
 
     fun deathByGold(){
-        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.undergroundlab)
+        gs.findViewById<ImageView>(R.id.gameImageView).setImageResource(R.drawable.gorgle)
 
         // Ensure GameScreen has these public properties
         gs.findViewById<TextView>(R.id.gameTextView).text = "You are turned into gold and thrown into his stack of riches... Your basically dead..."
@@ -1245,7 +1245,7 @@ class Story (val gs : GameScreen)
         nextPosition2 = ""
         nextPosition3 = ""
         nextPosition4 = ""
-
+        rightClosed = true
         acidicLiquid = true
     }
 
